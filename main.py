@@ -85,6 +85,7 @@ def grow(update: Update, context: CallbackContext):
 			print("user unrestricted")
 		else:
 			match waitTimes:
+				# a tiny match-case that provides a ton of responses in case if somebody calls the command again and again. Might get deleted in the future due to TG's ratelimiting
 				case 1:
 					update.effective_message.reply_text("Тебе нужно подождать 6 часов!")
 					context.user_data["waitCalled"] = waitTimes + 1
