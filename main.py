@@ -72,7 +72,7 @@ if DEBUGMODE:
 secretlist = ["Змея не разговорчивое существо.", "Змея ползет, но плохо слышит.", "Если змея заговорит, то мир затихнет.", "Подсказка произносится словами.", "Лишь знающий, услышит змею в кустах.", "Вилкам змей свойственно шуметь.", "Один раз услышав, хочется бежать."]
 def grow(update: Update, context: CallbackContext):
 	
-
+	# ratelimit so people would only be able to use this bot once every 6 hours
 	count = context.user_data.get("usageCount", 0)
 	restrict_since = context.user_data.get("restrictSince", 0)
 	waitTimes = context.user_data.get("waitCalled", 0)
