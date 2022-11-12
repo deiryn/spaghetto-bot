@@ -39,7 +39,7 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.4.5"
+botversion = "2.4.6"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -70,6 +70,7 @@ if DEBUGMODE:
 
 
 secretlist = ["Змея не разговорчивое существо.", "Змея ползет, но плохо слышит.", "Если змея заговорит, то мир затихнет.", "Подсказка произносится словами.", "Лишь знающий, услышит змею в кустах.", "Вилкам змей свойственно шуметь.", "Один раз услышав, хочется бежать."]
+secretlist2 = ["Буква с которой начинается слово шляпа на английском?", "Как можно сказать \"Я\" по-английски?", "Какую английскую букву повторяют змеи в тексте?"]
 def grow(update: Update, context: CallbackContext):
 	
 	# ratelimit so people would only be able to use this bot once every 6 hours
@@ -220,6 +221,13 @@ def grow(update: Update, context: CallbackContext):
 			update.message.reply_text(f'🐍: {secretlist[0]}')
 			if DEBUGMODE:
 				print("posting secret")
+			if random.randint(0, 10) >= 5:
+				random.shuffle(secretlist2)
+				update.message.reply_text(f'???: {secretlist2[0]}')
+				if DEBUGMODE:
+					print("posting secret2")
+			
+			
 
 	elif randnum < 0:
 		update.message.reply_text(f"Отхлебнув зелья Вы чувствуете изменения внутри себя. Вы стали короче на: {randnum*-1} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
@@ -241,6 +249,11 @@ def grow(update: Update, context: CallbackContext):
 			update.message.reply_text(f'🐍: {secretlist[0]}')
 			if DEBUGMODE:
 				print("posting secret")
+			if random.randint(0, 10) >= 5:
+				random.shuffle(secretlist2)
+				update.message.reply_text(f'???: {secretlist2[0]}')
+				if DEBUGMODE:
+					print("posting secret2")
 	
 	else:
 		update.message.reply_text(f"Отхлебнув зелья Вы чувствуете изменения внутри себя. Вы выросли на: {randnum} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
@@ -257,6 +270,11 @@ def grow(update: Update, context: CallbackContext):
 			update.message.reply_text(f'🐍: {secretlist[0]}')
 			if DEBUGMODE:
 				print("posting secret")
+			if random.randint(0, 10) >= 5:
+				random.shuffle(secretlist2)
+				update.message.reply_text(f'???: {secretlist2[0]}')
+				if DEBUGMODE:
+					print("posting secret2")
 
 	if totalHeight >= 150 and getAchvs[5] == 0:
 		cursor = connection.execute(f"UPDATE achievements SET ach5 = 1 WHERE id = {update.effective_user.id}")
@@ -326,7 +344,7 @@ if DEBUGMODE:
 	print("\x1b[41mDEBUG\x1b[m: height loaded")
 
 def ver(update: Update, context: CallbackContext):
-	update.message.reply_text(f"Текущая версия бота: {botversion}\nОбновление: 🐍?")
+	update.message.reply_text(f"Текущая версия бота: {botversion}\nОбновление: Пришлось обновить подсказки, добавить новые, а еще я ввела уведомление о том, что бот обновился")
 if DEBUGMODE:
 	print("\x1b[41mDEBUG\x1b[m: ver loaded")
 
@@ -479,6 +497,22 @@ if DEBUGMODE:
 if DEBUGMODE:
 	print("\x1b[41mDEBUG\x1b[m: DISPATCHER loaded")
 
+'''
+probably will never finish this because i'm the worst programmer ever to figure how to make it work
+f = open("versioncheck.txt", "r")
+lines = f.readlines()
+f.close()
+if DEBUGMODE:
+	print("\x1b[41mDEBUG\x1b[m: reading versioncheck.txt...")
+
+if lines[0] != botversion:
+	Update.message.send_message(f"Вышла новое обновление! Новая версия: {botversion}\nПосмотреть список обновлений: /ver")
+	print("\x1b[41mDEBUG\x1b[m: posting update logger message")
+	f = open("versioncheck.txt", "w")
+	f.write(f"{botversion}")
+	f.close()
+	print("\x1b[41mDEBUG\x1b[m: writing to verisoncheck.txt")
+'''
 if DEBUGMODE:
 	print("\x1b[41mDEBUG\x1b[m: Starting polling..........")
 updater.start_polling()
