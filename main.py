@@ -39,8 +39,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.6"
-updateNotice = "Еще больше сообщений связанных с /grow!!! (да я без идей, что еще добавить сейчас)"
+botversion = "2.6.1"
+updateNotice = "Небольшие обновления логики ихихи"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
