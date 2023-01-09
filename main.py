@@ -39,8 +39,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.6.1"
-updateNotice = "Небольшие обновления логики ихихи"
+botversion = "2.6.2"
+updateNotice = "Нет, это не я, я не бью вас молотком, хватит меня обвинять 😭"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -213,8 +213,11 @@ def grow(update: Update, context: CallbackContext):
 	#	update.message.reply_text(f"всем привет, с вами снова я спагетто бот\nи теперь я запрещаю {update.effective_user.mention_html} расти, потому что могу\nвсем спасибо за внимание\nваш,\nспагетто бот")
 
 	if randnum == 0:
-		update.message.reply_text(f"{random.choice(responseListZero)}\nВаш рост остался: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
-		
+		randomResponse = random.choice(responseListZero)
+		if not randomResponse.startswith("Получив по голове") and not update.effective_user.id == 1578707813:
+			update.message.reply_text(f"{randomResponse}\nВаш рост остался: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
+		update.message.reply_text(f"{randomResponse}\nВаш рост остался: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.\nНет, Фокс, это белая змея не я, кто вообще знает кто это...")
+
 		if getAchvs[2] == 0:
 			cursor = connection.execute(f"UPDATE achievements SET ach2 = 1 WHERE id = {update.effective_user.id}")
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Победный нуль»*", parse_mode='MarkdownV2')
@@ -236,8 +239,11 @@ def grow(update: Update, context: CallbackContext):
 			
 
 	elif randnum < 0:
-		update.message.reply_text(f"{random.choice(responseList)} Вы стали короче на: {randnum*-1} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
-		
+		randomResponse = random.choice(responseList)
+		if not randomResponse.startswith("Получив по голове") and not update.effective_user.id == 1578707813:
+			update.message.reply_text(f"{randomResponse} Вы стали короче на: {randnum*-1} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
+		update.message.reply_text(f"{randomResponse}\nВаш рост остался: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.\nНет, Фокс, это белая змея не я, кто вообще знает кто это...")
+
 		if getAchvs[1] == 0:
 			cursor = connection.execute(f"UPDATE achievements SET ach1 = 1 WHERE id = {update.effective_user.id}")
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Неудачи случаются»*", parse_mode='MarkdownV2')
@@ -262,8 +268,11 @@ def grow(update: Update, context: CallbackContext):
 					print("posting secret2")
 	
 	else:
-		update.message.reply_text(f"{random.choice(responseList)} Вы выросли на: {randnum} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
-		
+		randomResponse = random.choice(responseList)
+		if not randomResponse.startswith("Получив по голове") and not update.effective_user.id == 1578707813:
+			update.message.reply_text(f"{randomResponse} Вы выросли на: {randnum} см.\nТеперь Ваш текущий рост: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.")
+		update.message.reply_text(f"{randomResponse}\nВаш рост остался: {totalHeight} см!\nСледующая попытка будет доступна через 6 часов.\nНет, Фокс, это белая змея не я, кто вообще знает кто это...")
+
 		if getAchvs[3] == 0 and randnum == 15:
 			cursor = connection.execute(f"UPDATE achievements SET ach3 = 1 WHERE id = {update.effective_user.id}")
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Да, это я\.»*", parse_mode='MarkdownV2')
