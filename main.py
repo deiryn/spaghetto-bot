@@ -10,7 +10,7 @@ import random
 import sqlite3
 from time import time
 from os import environ
-import ansicon
+
 
 print("""\n\n
 ███████ ██████   █████   ██████  ██   ██ ███████ ████████ ████████ ██        ██████   ██████ ████████ 
@@ -28,6 +28,7 @@ if platform == "linux" or platform == "linux2":
 elif platform == "darwin":
 	pass
 elif platform == "win32":
+	import ansicon
 	ansicon.load()
 
 
