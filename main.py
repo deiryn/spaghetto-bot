@@ -22,7 +22,15 @@ print("""\n\n
                                                                                                       """)
 
 
-ansicon.load()
+from sys import platform
+if platform == "linux" or platform == "linux2":
+	pass
+elif platform == "darwin":
+	pass
+elif platform == "win32":
+	ansicon.load()
+
+
 print("Created by \x1b[35mDei\x1b[m")
 print("and \n\x1b[47m\x1b[30mpowered with\x1b[m \x1b[31mANSICON\x1b[m\x1b[m!")
 
@@ -39,8 +47,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.6.3"
-updateNotice = "Так ладно, надо было убрать бяку из бота и вроде бы все работает лучше.... надеюсъъ......"
+botversion = "2.6.4"
+updateNotice = "Исправляем маленькие ошибочкиб......"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -318,7 +326,7 @@ def grow(update: Update, context: CallbackContext):
 
 	if totalHeight >= 690 and getAchvs[10] == 0:
 		cursor = connection.execute(f"UPDATE achievements SET ach10 = 1 WHERE id = {update.effective_user.id}")
-		update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Уу... Оу май~»*", parse_mode='MarkdownV2')
+		update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Уу\.\.\. Оу май~»*", parse_mode='MarkdownV2')
 		print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 
 	if totalHeight >= 1337 and getAchvs[11] == 0:
