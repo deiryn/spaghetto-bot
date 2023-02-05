@@ -48,8 +48,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.6.4"
-updateNotice = "Исправляем маленькие ошибочкиб......"
+botversion = "2.6.5"
+updateNotice = "Проверка безопасности в попытке исправить тот самый баг"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -340,9 +340,12 @@ def grow(update: Update, context: CallbackContext):
 		update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Титан»*", parse_mode='MarkdownV2')
 		print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 
-	cursor = connection.execute(f"UPDATE users SET height = {totalHeight} WHERE id = {update.effective_user.id};")
-	connection.commit()
-	print("\x1b[36mdb\x1b[m \x1b[38;5;129mcommit\x1b[m || GROW: HEIGHT UPDATED")
+	try:
+		cursor = connection.execute(f"UPDATE users SET height = {totalHeight} WHERE id = {update.effective_user.id};")
+		connection.commit()
+		print("\x1b[36mdb\x1b[m \x1b[38;5;129mcommit\x1b[m || GROW: HEIGHT UPDATED")
+	except Exception as e:
+		print("\x1b[41mCRITICAL ERROR\x1b[m || \x1b[31mCANNOT ADD HEIGHT\x1b[m")
 
 if DEBUGMODE:
 	print("\x1b[41mDEBUG\x1b[m: grow loaded")
