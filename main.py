@@ -513,7 +513,7 @@ def snake(update: Update, context: CallbackContext):
 	getAchvs = results[0]
 	print(getAchvs)
 	print(getAchvs[13])
-	print(update.effective_user.id)
+	print(f"userid {update.effective_user.id}")
 	if getAchvs[13] == 0:
 		try:
 			cursor = connection.execute(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
