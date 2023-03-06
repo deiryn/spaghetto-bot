@@ -516,6 +516,7 @@ def snake(update: Update, context: CallbackContext):
 	print(f"userid {update.effective_user.id}")
 	if getAchvs[13] == 0:
 		try:
+			connection = sqlite3.connect('bot.db')
 			cursor = connection.execute(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
 			print("connection")
 			print(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
