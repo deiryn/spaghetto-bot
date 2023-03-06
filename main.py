@@ -511,18 +511,11 @@ def snake(update: Update, context: CallbackContext):
 	cursor = connection.execute(f"SELECT * FROM achievements WHERE id = {update.effective_user.id};")
 	results = cursor.fetchall()
 	getAchvs = results[0]
-	print(getAchvs)
-	print(getAchvs[13])
-	print(f"userid {update.effective_user.id}")
 	if getAchvs[13] == 0:
 		try:
 			connection = sqlite3.connect('bot.db')
 			cursor = connection.execute(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
-			cursor = connection.execute(f"SELECT * FROM achievements WHERE id = {update.effective_user.id};")
-			print("connection")
-			print(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
-			results = cursor.fetchall()
-			print(results)
+			connection.commit()
 			update.message.reply_text(f"🏆 🐍 🏆")
 			print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 		except Exception as e:
