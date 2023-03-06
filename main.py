@@ -48,8 +48,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.7.1"
-updateNotice = "кто не знает.... тот узнает!!"
+botversion = "2.7.2"
+updateNotice = "самый страшный багфикс в истории спагеттобота..."
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
