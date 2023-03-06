@@ -518,6 +518,7 @@ def snake(update: Update, context: CallbackContext):
 		try:
 			connection = sqlite3.connect('bot.db')
 			cursor = connection.execute(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
+			cursor = connection.execute(f"SELECT * FROM achievements WHERE id = {update.effective_user.id};")
 			print("connection")
 			print(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
 			update.message.reply_text(f"🏆 🐍 🏆")
