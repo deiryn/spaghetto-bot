@@ -521,6 +521,8 @@ def snake(update: Update, context: CallbackContext):
 			cursor = connection.execute(f"SELECT * FROM achievements WHERE id = {update.effective_user.id};")
 			print("connection")
 			print(f"UPDATE achievements SET ach13 = 1 WHERE id = {update.effective_user.id};")
+			results = cursor.fetchall()
+			print(results)
 			update.message.reply_text(f"🏆 🐍 🏆")
 			print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 		except Exception as e:
