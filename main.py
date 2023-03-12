@@ -48,8 +48,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.7.2"
-updateNotice = "самый страшный багфикс в истории спагеттобота..."
+botversion = "2.8"
+updateNotice = "подсказки к секрету отключены... возможно навсегда...."
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -236,7 +236,7 @@ def grow(update: Update, context: CallbackContext):
 			cursor = connection.execute(f"UPDATE achievements SET ach2 = 1 WHERE id = {update.effective_user.id}")
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Победный нуль»*", parse_mode='MarkdownV2')
 			print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
-
+		'''
 		if DEBUGMODE:
 			print(f"secretnum: {secretnum}")
 		if secretnum >= 10 and secretnum <= 20:
@@ -249,7 +249,7 @@ def grow(update: Update, context: CallbackContext):
 				update.message.reply_text(f'???: {secretlist2[0]}')
 				if DEBUGMODE:
 					print("posting secret2")
-			
+		'''	
 			
 
 	elif randnum < 0:
@@ -267,7 +267,7 @@ def grow(update: Update, context: CallbackContext):
 			cursor = connection.execute(f"UPDATE achievements SET ach4 = 1 WHERE id = {update.effective_user.id}")
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«НЕЕЕЕТ»*", parse_mode='MarkdownV2')
 			print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
-		
+		'''
 		if DEBUGMODE:
 			print(f"secretnum: {secretnum}")
 		if secretnum >= 10 and secretnum <= 20:
@@ -280,7 +280,7 @@ def grow(update: Update, context: CallbackContext):
 				update.message.reply_text(f'???: {secretlist2[0]}')
 				if DEBUGMODE:
 					print("posting secret2")
-	
+		'''
 	else:
 		randomResponse = random.choice(responseList)
 		#if not randomResponse.startswith("Получив по голове") and not update.effective_user.id == 1578707813:
@@ -292,6 +292,7 @@ def grow(update: Update, context: CallbackContext):
 			update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Да, это я\.»*", parse_mode='MarkdownV2')
 			print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 		
+		'''
 		if DEBUGMODE:
 			print(f"secretnum: {secretnum}")
 		if secretnum >= 10 and secretnum <= 20:
@@ -304,7 +305,7 @@ def grow(update: Update, context: CallbackContext):
 				update.message.reply_text(f'???: {secretlist2[0]}')
 				if DEBUGMODE:
 					print("posting secret2")
-
+		'''
 	if totalHeight >= 150 and getAchvs[5] == 0:
 		cursor = connection.execute(f"UPDATE achievements SET ach5 = 1 WHERE id = {update.effective_user.id}")
 		update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Покинуть клуб гномов»*", parse_mode='MarkdownV2')
@@ -345,6 +346,7 @@ def grow(update: Update, context: CallbackContext):
 		update.message.reply_text(f"🏆 Достижение разблокировано\! 🏆\nВы получили достижение: *«Титан»*", parse_mode='MarkdownV2')
 		print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACHIEVEMENT ADDED")
 
+	'''
 	if totalHeight >= 1000:
 		with open("reveal.txt") as bigReveal:
 			if bigReveal.read() != "1":
@@ -354,7 +356,7 @@ def grow(update: Update, context: CallbackContext):
 					print("\x1b[46mSECRET FINAL\x1b[m || POSTING FINAL SECRET")
 			else:
 				pass
-	
+	'''
 	try:
 		cursor = connection.execute(f"UPDATE users SET height = {totalHeight} WHERE id = {update.effective_user.id};")
 		connection.commit()
