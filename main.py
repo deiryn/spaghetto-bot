@@ -200,9 +200,9 @@ def grow(update: Update, context: CallbackContext):
 	if diceroll > 90:
 		randnum = 0
 	elif diceroll <= 85:
-		randnum = random.randint(-5, 15)
+		randnum = random.randint(-5, 16)
 	totalHeight = getHeight + randnum
-	secretnum = random.randint(1, 100)
+	#secretnum = random.randint(1, 100)
 
 	getAchvs = achieves[0]
 
