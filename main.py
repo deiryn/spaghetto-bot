@@ -48,8 +48,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.8"
-updateNotice = "подсказки к секрету отключены... возможно навсегда...."
+botversion = "2.9"
+updateNotice = "понижен шанс выпадения нуля, 85 (15%) -> 90 (10%) \n если я не перепишу бота в скором времени это станет не читаемым (оно уже не читаемое (пожалуйста спасите меня))"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -177,7 +177,7 @@ def grow(update: Update, context: CallbackContext):
 		connection.commit()
 		print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || USER ADDED")
 		results = cursor.fetchall()
-		cursor = connection.execute(f"INSERT INTO achievements(id, ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach8, ach9, ach10, ach11, ach12, ach13) VALUES ({update.effective_user.id}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);")
+		cursor = connection.execute(f"INSERT INTO achievements(id, ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach8, ach9, ach10, ach11, ach12) VALUES ({update.effective_user.id}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);")
 		connection.commit()
 		achieves = cursor.fetchall()
 		print("\x1b[36mdb\x1b[m \x1b[33mupdated\x1b[m || ACH_USER ADDED")
@@ -197,7 +197,7 @@ def grow(update: Update, context: CallbackContext):
 	#	randnum = random.randint(0, 0)
 	#calculation of random height
 	diceroll = random.randint(1, 100)
-	if diceroll > 85:
+	if diceroll > 90:
 		randnum = 0
 	elif diceroll <= 85:
 		randnum = random.randint(-5, 15)
