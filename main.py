@@ -48,8 +48,8 @@ else:
 	print("\x1b[47m\x1b[30mDEBUG MODE\x1b[m\x1b[m \x1b[32mOFF\x1b[m")
 
 ##### BOT VERSION
-botversion = "2.9"
-updateNotice = "понижен шанс выпадения нуля, 85 (15%) -> 90 (10%) \n если я не перепишу бота в скором времени это станет не читаемым (оно уже не читаемое (пожалуйста спасите меня))"
+botversion = "2.9.1"
+updateNotice = "убран баг с выпадением 16 см"
 ##### BOT VERSION
 
 updater = Updater(BOTKEY, use_context=True)
@@ -200,7 +200,7 @@ def grow(update: Update, context: CallbackContext):
 	if diceroll > 90:
 		randnum = 0
 	elif diceroll <= 85:
-		randnum = random.randint(-5, 16)
+		randnum = random.randint(-5, 15)
 	totalHeight = getHeight + randnum
 	#secretnum = random.randint(1, 100)
 
